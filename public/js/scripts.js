@@ -24,6 +24,9 @@ window.onload = () => {
 		console.log(user);
 		document.getElementById("info").innerText = `Bienvenido, ${user.username}#${user.discriminator}`;
 	})
-	.catch(console.error);
+	.catch((error) => {
+		document.getElementById("info").innerText = `Ocurrió un error, intente de nuevo más tarde...`;
+		console.log(error.message);
+	});
 
 };
