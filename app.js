@@ -19,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('Access-Control-Allow-Origin', "*")
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
