@@ -16,7 +16,7 @@ window.onload = () => {
 	fetch("https://discord.com/api/users/@me", {
 		headers: {
 			authorization: `${tokenType} ${accessToken}`,
-			Origin: "*"
+			"Access-Control-Allow-Origin": "*"
 		},
 	})
 	.then((result) => result.json())
