@@ -1,4 +1,4 @@
-window.onload = async () => {
+window.onload = () => {
 	const fragment = new URLSearchParams(window.location.hash.slice(1));
 	const [accessToken, tokenType] = [
 		fragment.get("access_token"),
@@ -13,11 +13,10 @@ window.onload = async () => {
 
 	document.getElementById("main").innerHTML += `<div id="load_container"><div id="load"></div></div>`;
 	
-	await fetch("https://discord.com/api/users/@me", {
-		mode: "no-cors",
+	fetch("https://discord.com/api/users/@me", {
+		/* mode: "no-cors", */
 		headers: {
 			authorization: `${tokenType} ${accessToken}`,
-			/* "Access-Control-Allow-Origin": "*" */
 		},
 	})
 	.then((result) => result.json())
