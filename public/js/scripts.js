@@ -36,6 +36,11 @@ window.onload = () => {
 	})
 	.catch((error) => {
 		document.getElementById("user-welcome-text").innerText = `Ocurrió un error, intente de nuevo más tarde...`;
+		
+		let mainContainer = document.getElementById('main');
+		let loader = document.getElementById('load_container');
+		mainContainer.removeChild(loader);
+
 		console.log(error.message);
 	});
 
