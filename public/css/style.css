@@ -1,5 +1,60 @@
+:root {
+  --yellow-primary: #ebe851;
+
+  /* Text */
+  --title-color: #eff3f5;
+  --text-color: #c8cdd0;
+  --light-text-color: #a0a7ac;
+
+  /* Backgrounds */
+  --body-bg: #192229;
+  --container-bg: #212e36;
+  --dark-border: #2a3b47;
+
+  /* Fonts */
+  --title-font: "Raleway", sans-serif;
+  --text-font: "Open Sans", sans-serif;
+}
+
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   font-size: 16px;
+  font-family: var(--text-font);
+  background-color: var(--body-bg);
+  color: var(--text-color);
+}
+
+h1 {
+  color: var(--title-color);
+  font-family: var(--title-font);
+}
+
+.container {
+  background-color: var(--container-bg);
+  border: 1px solid var(--dark-border);
+}
+
+.main-container {
+  display: grid;
+  place-content: center;
+  margin-top: 30vh;
+}
+
+#login-button {
+  margin-left: 25%;
+}
+
+#user-welcome img {
+  border: 1px solid var(--dark-border);
+  border-radius: 80px;
 }

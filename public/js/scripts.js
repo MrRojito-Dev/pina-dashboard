@@ -1,5 +1,5 @@
 window.onload = () => {
-	document.getElementById("info").innerText = `Cargando...`;
+	document.getElementById("user-welcome-text").innerHTML = `<div id="load_container"><div id="load"></div></div>`;
 	const fragment = new URLSearchParams(window.location.hash.slice(1));
 	const [accessToken, tokenType] = [
 		fragment.get("access_token"),
@@ -7,26 +7,29 @@ window.onload = () => {
 	];
 
 	if (!accessToken) {
-		document.getElementById("info").innerText =
-			"Bienvenido, inicia sesión para continuar:";
+		document.getElementById("user-welcome-text").innerText = "Bienvenido, inicia sesión para continuar:";
 
-		return (document.getElementById("login").style.display = "block");
+		return (document.getElementById("login-button").style.display = "block");
 	}
 
 	fetch("https://discord.com/api/users/@me", {
 		headers: {
 			authorization: `${tokenType} ${accessToken}`,
-			"Access-Control-Allow-Origin": "*"
+			/* "Access-Control-Allow-Origin": "*" */
 		},
 	})
 	.then((result) => result.json())
 	.then((response) => {
 		const user = response;
-		console.log(user);
-		document.getElementById("info").innerText = `Bienvenido, ${user.username}#${user.discriminator}`;
+		
+		let welcomeDiv = document.getElementById("user-welcome");
+		let welcomeText = document.getElementById("user-welcome-text");
+
+		welcomeText.innerText = `Bienvenido, ${user.username}#${user.discriminator}`;
+		welcomeDiv.innerHTML += `<img src="https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.gif" alt="${user.username}'s Avatar">`
 	})
 	.catch((error) => {
-		document.getElementById("info").innerText = `Ocurrió un error, intente de nuevo más tarde...`;
+		document.getElementById("user-welcome-text").innerText = `Ocurrió un error, intente de nuevo más tarde...`;
 		console.log(error.message);
 	});
 

@@ -1,0 +1,34 @@
+#load_container {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+
+#load {
+    border: 15px solid var(--container-bg);
+    border-top-color: var(--yellow-primary);
+    border-top-style: solid;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    position: absolute;
+    margin: auto;
+    margin-left: 2.5%;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+     to {
+         transform: rotate(360deg);
+     }
+}
