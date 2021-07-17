@@ -20,6 +20,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.get('/login', (req, res) => {
+  res.redirect("https://discord.com/api/oauth2/authorize?client_id=744386070552117278&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify")
+})
+
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
