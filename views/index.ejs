@@ -14,35 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <header class="navbar container">
-      <ul class="nav-items" style="--index: 1;">
-        <li class="nav-item active">
-          <a class="item-link" onclick="select(this)" href="/">
-            <i class="fas fa-home"></i> Inicio
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="item-link" onclick="select(this)" href="#">
-            <i class="fas fa-book-open"></i> Comandos
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="item-link" onclick="select(this)" href="#">
-            <i class="fas fa-store"></i> Economía
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="item-link" onclick="select(this)" href="#">
-            <i class="fas fa-question-circle"></i> Soporte
-          </a>
-        </li>
-        <li class="nav-item login">
-          <a class="item-link" onclick="select(this)" href="#">
-            <i class="fas fa-user"></i> Iniciar Sesión
-          </a>
-        </li>
-      </ul>
-  </header>
+  <%- include('header'); -%>
 
   <main class="main-container text-center" id="main">
     <h1><%= title %></h1>
