@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/navigation.css">
+<header class="navbar container">
+    <ul class="nav-items" style="--index: 1;">
+      <li class="nav-item">
+        <a class="item-link" onclick="select(this)" href="/">
+          <i class="fas fa-home"></i> Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="item-link" onclick="select(this)" href="#">
+          <i class="fas fa-book-open"></i> Comandos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="item-link" onclick="select(this)" href="#">
+          <i class="fas fa-store"></i> Economía
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="item-link" onclick="select(this)" href="/soporte">
+          <i class="fas fa-question-circle"></i> Soporte
+        </a>
+      </li>
+      <li class="nav-item login">
+        <% if (user) { %>
+          <a class="item-link" onclick="select(this)" href="/logout">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+          </a>
+      </li>
+      
+      <% } else { %>
+          <a class="item-link" onclick="select(this)" href="/login">
+            <i class="fas fa-user"></i> Iniciar Sesión
+          </a>
+      <% } %>
+    </ul>
+</header>
