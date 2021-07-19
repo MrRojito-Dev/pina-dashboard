@@ -1,18 +1,63 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const path = require('path');
+const logger = require('morgan');
+const express = require('express');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const { Strategy } = require('passport-discord');
+const session = require('express-session');
 
-var app = express();
+let indexRouter = require('./routes/index');
+let dashRouter = require('./routes/dashboard');
+
+const app = express();
+const server = require('http').createServer(app);
+
+let scopes = ['identify'];
+
+const Discord = require('discord.js');
+const client = new Discord.Client({
+  ws: {
+    intents: Discord.Intents.PRIVILEGED
+  },
+  allowedMentions: { parse: [] }
+});
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+  done(null, obj);
+});
+
+passport.use(new Strategy({
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  callbackURL: `http://localhost:3000/login`,
+  scope: scopes,
+}, (accessToken, refreshToken, profile, done) => {
+  process.nextTick(() => {
+    return done(null, profile);
+  });
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({
+  secret: 'name',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use((req, res, next) => {
+  req.client = client;
+  next();
+});
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,17 +65,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.get('/login', (req, res) => {
-  res.redirect("https://discord.com/api/oauth2/authorize?client_id=744386070552117278&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=token&scope=identify")
-})
+app.use('/dashboard', dashRouter);
 
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
 app.get('*', (req, res) => {
   res.status(404).render('404', {
     title: "Piña Bot"
   });
 });
 
-module.exports = app;
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+  console.log(`Server listen on port ${port}`)
+
+  client.login(process.env.DISCORD_TOKEN)
+  .then(() => console.log(`sesión iniciada en Discord como ${client.user.tag}`))
+  .catch((err) => console.error(err))
+});

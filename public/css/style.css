@@ -1,5 +1,23 @@
 :root {
+  /* Yellow */
   --yellow-primary: #ebe851;
+  --yellow-strong: #ebcb3f;
+  --yellow-dark: #d6a228;
+
+  /* Green */
+  --green-primary: #2dd280;
+  --green-strong: #1f9359;
+  --green-dark: #0d3f26;
+
+  /* Blue */
+  --blue-primary: #58b3f3;
+  --blue-strong: #1083d5;
+  --blue-dark: #052c48;
+
+  /* Red */
+  --red-primary: #eb5656;
+  --red-strong: #a43d3d;
+  --red-dark: #471a1a;
 
   /* Text */
   --title-color: #eff3f5;
@@ -29,14 +47,35 @@ body {
   margin: 0;
   width: 100%;
   font-size: 16px;
-  font-family: var(--text-font);
   background-color: var(--body-bg);
   color: var(--text-color);
 }
 
-h1 {
+p {
+  font-family: var(--text-font);
+}
+
+header {
+  font-family: var(--title-font);
+}
+
+h1, h2, h3, h4 {
   color: var(--title-color);
   font-family: var(--title-font);
+}
+
+strong {
+  color: var(--yellow-strong);
+}
+
+a {
+  color: var(--yellow-primary);
+  text-decoration: none;
+  transition: all 0.5s linear;
+}
+
+a:hover {
+  color: var(--yellow-strong);
 }
 
 .container {
@@ -48,10 +87,6 @@ h1 {
   display: grid;
   place-content: center;
   margin-top: 30vh;
-}
-
-#login-button {
-  margin-left: 25%;
 }
 
 #user-welcome img {

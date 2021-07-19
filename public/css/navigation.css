@@ -45,7 +45,7 @@
 }
 
 .nav-item.active .item-link {
-    color: var(--yellow-primary);
+    color: var(--yellow-strong);
 }
 
 .item-link {
@@ -57,6 +57,6 @@
 }
 
 .item-link:hover {
-    color: yellow;
+    color: var(--yellow-primary);
     text-decoration: underline;
 }

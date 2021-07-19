@@ -1,5 +1,7 @@
 window.onload = () => {
-	const fragment = new URLSearchParams(window.location.hash.slice(1));
+	console.log("Hello World ;)");
+	
+	/* const fragment = new URLSearchParams(window.location.hash.slice(1));
 	const [accessToken, tokenType] = [
 		fragment.get("access_token"),
 		fragment.get("token_type"),
@@ -14,7 +16,7 @@ window.onload = () => {
 	document.getElementById("main").innerHTML += `<div id="load_container"><div id="load"></div></div>`;
 	
 	fetch("https://discord.com/api/users/@me", {
-		/* mode: "no-cors", */
+		// mode: "no-cors",
 		headers: {
 			authorization: `${tokenType} ${accessToken}`,
 		},
@@ -42,6 +44,6 @@ window.onload = () => {
 		mainContainer.removeChild(loader);
 
 		console.log(error.message);
-	});
+	}); */
 
 };
