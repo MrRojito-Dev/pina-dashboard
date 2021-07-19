@@ -35,7 +35,7 @@ passport.deserializeUser((obj, done) => {
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: `http://localhost:3000/login`,
+  callbackURL: `${process.env.URL}/login`,
   scope: scopes,
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
