@@ -1,7 +1,7 @@
 :root {
   /* Yellow */
   --yellow-primary: #ebe851;
-  --yellow-strong: #ebcb3f;
+  --yellow-strong: #ebcc3fef;
   --yellow-dark: #d6a228;
 
   /* Green */
@@ -68,6 +68,10 @@ strong {
   color: var(--yellow-strong);
 }
 
+.yellow-primary {
+  color: var(--yellow-primary);
+}
+
 a {
   color: var(--yellow-primary);
   text-decoration: none;
@@ -86,7 +90,12 @@ a:hover {
 .main-container {
   display: grid;
   place-content: center;
-  margin-top: 30vh;
+  margin: 10px;
+  margin-top: 20vh;
+}
+
+.main-content {
+  margin-top: 3vh;
 }
 
 #user-welcome img {

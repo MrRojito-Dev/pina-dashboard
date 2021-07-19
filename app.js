@@ -14,7 +14,7 @@ let dashRouter = require('./routes/dashboard');
 const app = express();
 const server = require('http').createServer(app);
 
-let scopes = ['identify'];
+let scopes = ['identify', 'guilds'];
 
 const Discord = require('discord.js');
 const client = new Discord.Client({

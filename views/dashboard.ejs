@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Piña Bot - Dashboard</title>
+    <title><%= title %> - Dashboard</title>
 
     <%- include('partials/header'); -%>
 </head>
 <body>
-    <h1>En desarrollo...</h1>
-    <a href="/">Volver al inicio</a>
+    <%- include('partials/navbar'); -%>
+
+    <main class="main-container text-center" id="main">
+        <h1><%= title %> <strong>Dashboard</strong></h1>
+
+        <div class="main-content">
+          <% guilds.filter((g) => g.owner).forEach((guild) => { %>
+            <div class="card text-white bg-dark mb-3 w-100 columns-3">
+                <h3 class="card-header">Servidor</h3>
+                <div class="card-body">
+                    <h5 class="card-title"><%= guild.name %></h5>
+                    <h6 class="card-subtitle text-muted"><%= guild.id %></h6>
+                </div>
+                <% if (guild.icon) { %>
+                    <img class="d-block user-select-none" width="100%" height="400" focuseable="false" role="img" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png" alt="Icono de <%= guild.name %>">
+                <% } else { %>
+                    <img class="d-block user-select-none" width="100%" height="400" focuseable="false" role="img" src="https://image.flaticon.com/icons/png/512/1548/1548682.png" alt="Icono de <%= guild.name %>">
+                <% } %>
+                <div class="card-body">
+                    <a class="btn btn-warning" href="https://discord.com/oauth2/authorize?scope=bot&response_type=code&permissions=70642880&client_id=744386070552117278&guild_id=<%= guild.id %>">Agregar al servidor</a>
+                </div>
+            </div>
+          <% }) %>
+        </div>
+    </main>
 </body>
 </html>

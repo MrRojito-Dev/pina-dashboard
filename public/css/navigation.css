@@ -60,3 +60,24 @@
     color: var(--yellow-primary);
     text-decoration: underline;
 }
+
+.user-avatar img {
+    margin: 10px;
+    width: 30%;
+    border: 1px solid var(--dark-border);
+    border-radius: 80px;
+}
+
+.user-avatar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width: 840px){
+    .user-avatar {
+        width: 1px;
+        visibility: hidden;
+        display: grid;
+        position: absolute;
+    }
+}

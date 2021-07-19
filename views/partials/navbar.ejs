@@ -34,4 +34,9 @@
           </a>
       <% } %>
     </ul>
+    <% if (user) { %>
+      <div class="user-avatar">
+        <img src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="">
+      </div>
+    <% } %>
 </header>
