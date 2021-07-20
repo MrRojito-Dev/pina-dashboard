@@ -103,3 +103,12 @@ a:hover {
   border: 1px solid var(--dark-border);
   border-radius: 80px;
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--yellow-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #141412;
+}

@@ -73,7 +73,7 @@
     justify-content: flex-end;
 }
 
-@media screen and (max-width: 840px){
+@media screen and (max-width: 857px){
     .user-avatar {
         width: 1px;
         visibility: hidden;

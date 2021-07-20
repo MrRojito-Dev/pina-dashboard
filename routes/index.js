@@ -8,13 +8,6 @@ const CheckAuth = require('../auth.js');
 router.get('/', async (req, res) => {
   const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
 
-  if (user) {
-    let channelLogs = await req.client.channels.fetch("848045465383469096").catch(() => false);
-    if (channelLogs) {
-      channelLogs.send(`**${user.tag}** se ha logeado en la página...`);
-    }
-  }
-
   res.render('index', {
     title: 'Piña Bot',
     user: user
