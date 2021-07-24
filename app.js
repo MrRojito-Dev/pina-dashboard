@@ -32,6 +32,14 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
+let models = {
+  profiles: require('./database/models/profile.js'),
+};
+
+client.models = models;
+
+const webLogs = client.channels.fetch("868564301810659358").then((ch) => ch);
+
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
@@ -39,10 +47,32 @@ passport.use(new Strategy({
   scope: scopes,
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(async () => {
-    client.channels.fetch("868564301810659358").then((ch) => ch.send(`**${profile.username}#${profile.discriminator} (${profile.id})** ha iniciado sesión`))
+    webLogs.send(`**${profile.username}#${profile.discriminator} (${profile.id})** ha iniciado sesión`);
+
+    let user = await client.users.fetch(profile.id).catch(() => false) || profile;
+
+    let userProfile = await client.models.profiles.findOne({ ID: profile.id });
+    if (!userProfile) {
+      let newUserProfile = new client.models.profiles({
+        ID: profile.id,
+        username: profile.username,
+        description: "Sin descripción...",
+        reputation: 0,
+        tag: `${profile.username}#${profile.discriminator}`,
+        discriminator: profile.discriminator,
+        displayAvatarURL: user.displayAvatarURL({ dynamic: true }),
+        avatarCode: profile.avatar
+      });
+
+      newUserProfile.save();
+
+      webLogs.send(`Perfil de **${user.tag}** (${user.id}) creado...`);
+    }
+
     return done(null, profile);
   });
 }));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
