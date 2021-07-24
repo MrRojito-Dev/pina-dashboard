@@ -20,22 +20,35 @@
           <i class="fas fa-question-circle"></i> Soporte
         </a>
       </li>
-      <li class="nav-item login">
-        <% if (user) { %>
-          <a class="item-link" href="/logout">
-            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+      <li class="nav-item premium">
+          <a class="item-link" href="/premium">
+            <i class="fas fa-crown" style="color: var(--yellow-strong);"></i> Premium
           </a>
       </li>
-      
-      <% } else { %>
-          <a class="item-link" href="/login">
-            <i class="fas fa-user"></i> Iniciar Sesión
-          </a>
-      <% } %>
     </ul>
     <% if (user) { %>
-      <div class="user-avatar">
-        <img src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="">
+      <div class="user-icon-container">
+        <div class="user-icon">
+          <img class="user-avatar" src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="Avatar de <%= user.username%>">
+          <span class="user-username"><%= user.username %></span>
+          <i class="fas fa-angle-down" id="arrow-menu"></i>
+          
+          <ul class="user-icon-menu" id="menu">
+            <li class="user-icon-menu-item">
+              <a href="/perfil">Mi Perfil</a>
+            </li>
+            <li class="user-icon-menu-item">
+              <a href="/dashboard">Panel de control</a>
+            </li>
+            <li class="user-icon-menu-item logout">
+              <a href="/logout">Cerrar sesión</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    <% } else { %>
+      <a class="item-link" id="login-icon" href="/login">
+        <i class="fas fa-sign-in-alt"></i>
+      </a>
     <% } %>
 </header>

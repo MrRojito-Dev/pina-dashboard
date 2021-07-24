@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Premium | <%= title %></title>
+    <%- include('partials/header'); -%>
+
+    <link rel="stylesheet" href="/css/premium.css">
+</head>
+<body>
+    <%- include('partials/navbar'); -%>
+
+    <main class="main-container text-center">
+        <h1><%= title %> <strong>Premium</strong></h1>
+        <div class="main-content">
+            <div class="premium-page">
+                <h2>¡Obtén beneficios exclusivos!</h2>
+                <div class="premium-benefits container">
+                    <ul class="premium-benefits-list">
+                        <li class="premium-general-benefit">
+                            Carácteristicas exclusivas para miembros premium.
+                        </li>
+                        <li class="premium-general-benefit">
+                            Insignia exclusiva para tu perfil.
+                        </li>
+                        <li class="premium-general-benefit">
+                            Añade tu username junto a una URL en el comando <code>p!donadores</code>.
+                        </li>
+                        <li class="premium-general-benefit">
+                            Roles exclusivos en el <a href="https://discord.gg/REcFSm6">servidor de soporte</a>.
+                        </li>
+                        <li class="premium-general-benefit">
+                            ¡Y mucho más!
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards-container">
+                    <div class="premium-cards">
+                        <div class="premium-card booster">
+                            <div class="premium-card-header booster">
+                                <h3>Booster</h3>
+                                <p>¡Solo 2 mejoras al servidor de soporte!</p>
+                            </div>
+                            <div class="premium-card-button-container">
+                                <a class="premium-card-button booster" href="https://discord.gg/REcFSm6">
+                                    Ingresar al servidor
+                                </a>
+                            </div>
+                            <div class="premium-card-description booster">
+                                <div class="premium-card-description-content">
+                                <img src="/img/boost-icon.svg" alt="Icono de Boost">
+                                <p>Mejora el servidor de soporte 2 veces y accede a beneficios exclusivos para miembros premiums.</p>
+                            </div>
+                        </div>
+                        <ul class="premium-card-benefits booster">
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para booster
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para booster
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para booster
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para booster
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para booster
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="premium-card donator">
+                        <div class="premium-card-header donator">
+                            <h3>Donador</h3>
+                            <p>Solo un aporte voluntario 💛</p>
+                        </div>
+                        <div class="premium-card-button-container">
+                            <a class="premium-card-button donator" href="https://paypal.com">
+                                Hacer un aporte voluntario
+                            </a>
+                        </div>
+                        <div class="premium-card-description donator">
+                            <div class="premium-card-description-content">
+                                <img src="/img/boost-icon.svg" alt="Icono de Boost">
+                                <p>Haz un aporte voluntario y accede a beneficios exclusivos para miembros premiums.</p>
+                            </div>
+                        </div>
+                        <ul class="premium-card-benefits donator">
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para donador
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para donador
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para donador
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para donador
+                            </li>
+                            <li class="premium-benefit">
+                                <i class="fas fa-check-circle premium-benefit-icon"></i>
+                                Beneficio para donador
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+</body>
+</html>

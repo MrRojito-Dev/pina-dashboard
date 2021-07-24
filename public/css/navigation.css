@@ -1,13 +1,12 @@
 .navbar {
+    justify-content: space-between;
+    align-items: center;
     max-width: 800%;
     padding: 0 2em;
-    border-radius: 0.5rem;
     line-height: 4em;
     font-weight: bold;
     white-space: nowrap;
-    overflow: auto;
     transition: all 0.5s linear;
-    border-radius: 0;
 }
 
 .nav-items {
@@ -61,23 +60,85 @@
     text-decoration: underline;
 }
 
-.user-avatar img {
+#login-icon {
+    color: var(--yellow-primary);
+}
+
+.user-icon-container {
+    position: relative;
+    max-width: 150px;
+}
+
+.user-icon {
+    margin: 0;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.user-username {
+    font-size: 14px;
+}
+
+.user-avatar {
     margin: 10px;
-    width: 30%;
+    width: 20%;
+    min-width: 20%;
+    max-width: 20%;
     border: 1px solid var(--dark-border);
     border-radius: 80px;
 }
 
-.user-avatar {
-    display: flex;
-    justify-content: flex-end;
+#arrow-menu {
+    margin-left: 1vh;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 857px){
-    .user-avatar {
+.user-icon-menu {
+    background-color: var(--body-bg-dark);
+    min-width: 160px;
+    position: absolute;
+    top: 80px;
+    border: 1px solid var(--dark-border);
+    border-radius: 4px;
+    visibility: hidden;
+    transition: all 0.5s linear;
+}
+
+.user-icon-menu.open {
+    transition: all 0.5s linear;
+    visibility: visible;
+}
+
+.user-icon-menu-item {
+    width: 100%;
+    display: flex;
+    margin: 5px;
+    padding: 5px 12px;
+    margin-left: -7px;
+}
+
+.user-icon-menu-item a:hover {
+    background-color: var(--container-bg);
+}
+
+.logout a {
+    color: var(--red-primary);
+}
+
+.logout a:hover {
+    color: var(--red-strong);
+}
+
+@media screen and (max-width: 835px){
+    .user-icon {
         width: 1px;
         visibility: hidden;
-        display: grid;
         position: absolute;
+    }
+
+    .navbar {
+        overflow-y: hidden;
     }
 }

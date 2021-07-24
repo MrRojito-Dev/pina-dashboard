@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const path = require('path');
-const logger = require('morgan');
 const express = require('express');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
@@ -58,7 +57,6 @@ app.use((req, res, next) => {
   req.client = client;
   next();
 });
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

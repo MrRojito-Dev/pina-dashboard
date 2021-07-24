@@ -26,6 +26,7 @@
 
   /* Backgrounds */
   --body-bg: #192229;
+  --body-bg-dark: #1d282e;
   --container-bg: #212e36;
   --dark-border: #2a3b47;
 
@@ -52,7 +53,8 @@ body {
   font-display: initial;
 }
 
-p {
+h5, h6, p {
+  color: var(--text-color);
   font-family: var(--text-font);
 }
 
@@ -86,6 +88,7 @@ a:hover {
 .container {
   background-color: var(--container-bg);
   border: 1px solid var(--dark-border);
+  border-radius: 5px;
 }
 
 .main-container {
@@ -93,6 +96,7 @@ a:hover {
   place-content: center;
   margin: 10px;
   margin-top: 20vh;
+  justify-content: center;
 }
 
 .main-content {
@@ -105,7 +109,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--yellow-primary);
+  background-color: #ebe851;
   border-radius: 3px;
 }
 

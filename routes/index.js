@@ -10,8 +10,18 @@ router.get('/', async (req, res) => {
 
   res.render('index', {
     title: 'Piña Bot',
-    user: user
+    user
   });
+});
+
+// Premium
+router.get('/premium', async (req, res) => {
+  const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
+
+  res.render('premium', {
+    title: "Piña Bot",
+    user
+  })
 });
 
 // Soporte
@@ -20,7 +30,7 @@ router.get('/soporte', async (req, res) => {
 
   res.render('soporte', {
     title: 'Piña Bot',
-    user: user
+    user
   });
 });
 
