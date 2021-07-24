@@ -38,8 +38,8 @@ passport.use(new Strategy({
   callbackURL: `${process.env.URL}/login`,
   scope: scopes,
 }, (accessToken, refreshToken, profile, done) => {
-  process.nextTick(() => {
-    console.log(`${profile.username}#${profile.discriminator} ha iniciado sesión`)
+  process.nextTick(async () => {
+    client.channels.fetch("868564301810659358").then((ch) => ch.send(`**${profile.username}#${profile.discriminator} (${profile.id})** ha iniciado sesión`))
     return done(null, profile);
   });
 }));
