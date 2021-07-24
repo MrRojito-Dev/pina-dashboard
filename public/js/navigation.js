@@ -1,8 +1,9 @@
 window.onload = () => {
+    const userIcon = document.getElementById("user-icon");
     const navIconMenu = document.getElementById("arrow-menu");
     
-    if (navIconMenu) {
-        navIconMenu.onclick = () => {
+    if (userIcon) {
+        userIcon.onclick = () => {
             let navMenu = document.getElementById("menu");
             
             if (navMenu.classList.contains("open") && navIconMenu.classList.contains("open")) {

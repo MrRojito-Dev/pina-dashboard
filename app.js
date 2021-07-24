@@ -39,6 +39,7 @@ passport.use(new Strategy({
   scope: scopes,
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(() => {
+    console.log(`${profile.username}#${profile.discriminator} ha iniciado sesión`)
     return done(null, profile);
   });
 }));

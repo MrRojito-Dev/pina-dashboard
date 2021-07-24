@@ -28,7 +28,7 @@
     </ul>
     <% if (user) { %>
       <div class="user-icon-container">
-        <div class="user-icon">
+        <div class="user-icon" id="user-icon">
           <img class="user-avatar" src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="Avatar de <%= user.username%>">
           <span class="user-username"><%= user.username %></span>
           <i class="fas fa-angle-down" id="arrow-menu"></i>

@@ -67,17 +67,25 @@
 .user-icon-container {
     position: relative;
     max-width: 150px;
-    width: 120px;
+    width: 112px;
 }
 
 .user-icon {
+    padding: 2px;
+    height: 40px;
     display: flex;
-    margin: 0;
     flex-direction: row;
-    display: flex;
     justify-content: flex-end;
     align-items: center;
     align-content: center;
+    cursor: pointer;
+    transition: all 0.5s linear;
+    border-radius: 5px;
+}
+
+.user-icon:hover {
+    background-color: #2a3841;
+    transition: all 0.3s linear;
 }
 
 .user-username {
@@ -86,16 +94,15 @@
 
 .user-avatar {
     margin: 10px;
-    width: 30px;
-    min-width: 30px;
-    max-width: 30px;
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
     border: 1px solid var(--dark-border);
     border-radius: 80px;
 }
 
 #arrow-menu {
     margin-left: 1vh;
-    cursor: pointer;
 }
 
 .user-icon-menu {
@@ -120,10 +127,12 @@
     margin: 5px;
     padding: 5px 12px;
     margin-left: -7px;
+    height: 10%;
 }
 
 .user-icon-menu-item a:hover {
     background-color: var(--container-bg);
+    border-radius: 5px;
 }
 
 .logout a {
@@ -141,14 +150,19 @@
         position: initial;
     }
 
+    #arrow-menu {
+        margin-left: 0px;
+    }
+
     .user-icon-container {
-        width: 70px;
+        width: 60px;
     }
 }
 
 @media screen and (max-width: 755px){
-    .user-icon {
-        width: 1px;
+    .user-icon-container {
+        width: 0px;
+        height: 0px;
         visibility: hidden;
         position: absolute;
     }
