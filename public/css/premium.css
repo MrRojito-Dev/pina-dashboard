@@ -106,7 +106,8 @@ p, ul {
 }
 
 .premium-card-description-content img {
-    width: 70px;
+    width: 40px;
+    height: 40px;
 }
 
 .premium-card-benefits {
