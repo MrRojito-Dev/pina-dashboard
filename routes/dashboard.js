@@ -7,7 +7,7 @@ const CheckAuth = require('../auth.js');
 router.get('/', CheckAuth, async (req, res) => {
   const user = await req.client.users.fetch(req.user.id);
 
-  res.render('dashboard', {
+  res.render('dashboard/dashboard', {
     user: user,
     guilds: req.user.guilds,
     title: "Piña Bot"

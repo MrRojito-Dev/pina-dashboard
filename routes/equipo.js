@@ -4,7 +4,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
 
-    res.render('equipo', {
+    res.render('equipo/equipo', {
         title: "Piña Bot",
         user
     });
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/miembros', async (req, res) => {
     const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
 
-    res.render('team-members', {
+    res.render('equipo/team-members', {
         title: "Piña Bot",
         user
     });

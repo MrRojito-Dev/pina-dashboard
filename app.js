@@ -10,6 +10,7 @@ const session = require('express-session');
 let indexRouter = require('./routes/index');
 let dashRouter = require('./routes/dashboard');
 let teamRouter = require('./routes/equipo');
+let perfilRouter = require('./routes/perfil');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -97,6 +98,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/dashboard', dashRouter);
 app.use('/equipo', teamRouter);
+app.use('/perfil', perfilRouter);
 
 app.get('*', (req, res) => {
   res.status(404).render('partials/404', {
