@@ -38,8 +38,6 @@ let models = {
 
 client.models = models;
 
-const webLogs = client.channels.fetch("868564301810659358").then((ch) => ch);
-
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
@@ -47,6 +45,8 @@ passport.use(new Strategy({
   scope: scopes,
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(async () => {
+    const webLogs = await client.channels.fetch("868564301810659358");
+
     webLogs.send(`**${profile.username}#${profile.discriminator} (${profile.id})** ha iniciado sesión`);
 
     let user = await client.users.fetch(profile.id).catch(() => false) || profile;
