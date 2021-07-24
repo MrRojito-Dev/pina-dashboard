@@ -9,6 +9,7 @@ const session = require('express-session');
 
 let indexRouter = require('./routes/index');
 let dashRouter = require('./routes/dashboard');
+let teamRouter = require('./routes/equipo');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -64,9 +65,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/dashboard', dashRouter);
+app.use('/equipo', teamRouter);
 
 app.get('*', (req, res) => {
-  res.status(404).render('404', {
+  res.status(404).render('partials/404', {
     title: "Piña Bot"
   });
 });

@@ -67,14 +67,17 @@
 .user-icon-container {
     position: relative;
     max-width: 150px;
+    width: 120px;
 }
 
 .user-icon {
+    display: flex;
     margin: 0;
     flex-direction: row;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    align-content: center;
 }
 
 .user-username {
@@ -83,9 +86,9 @@
 
 .user-avatar {
     margin: 10px;
-    width: 20%;
-    min-width: 20%;
-    max-width: 20%;
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
     border: 1px solid var(--dark-border);
     border-radius: 80px;
 }
@@ -131,7 +134,19 @@
     color: var(--red-strong);
 }
 
-@media screen and (max-width: 835px){
+@media screen and (max-width: 832px) {
+    .user-username {
+        width: 0px;
+        visibility: hidden;
+        position: initial;
+    }
+
+    .user-icon-container {
+        width: 70px;
+    }
+}
+
+@media screen and (max-width: 755px){
     .user-icon {
         width: 1px;
         visibility: hidden;
