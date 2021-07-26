@@ -52,24 +52,6 @@ passport.use(new Strategy({
 
     let user = await client.users.fetch(profile.id).catch(() => false) || profile;
 
-    let userProfile = await client.models.profiles.findOne({ ID: profile.id });
-    if (!userProfile) {
-      let newUserProfile = new client.models.profiles({
-        ID: profile.id,
-        username: profile.username,
-        description: "Sin descripción...",
-        reputation: 0,
-        tag: `${profile.username}#${profile.discriminator}`,
-        discriminator: profile.discriminator,
-        displayAvatarURL: user.displayAvatarURL({ dynamic: true }),
-        avatarCode: profile.avatar
-      });
-
-      newUserProfile.save();
-
-      webLogs.send(`Perfil de **${user.tag}** (${user.id}) creado...`);
-    }
-
     return done(null, profile);
   });
 }));
