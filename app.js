@@ -95,6 +95,15 @@ client.on("ready", () => {
   require('./database/connect.js').then(() => console.log(`Connected to the database`));
 });
 
+client.on("message", (message) => {
+  let prefix = "pw!";
+
+  if (message.channel.type === "dm" || message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  console.log(message.content); // Test
+});
+
 server.listen(port, () => {
   console.log(`Server listen on port ${port}`)
 
