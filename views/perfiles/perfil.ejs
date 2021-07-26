@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
     <title><%= user.tag %></title>
-    <%- include('partials/header'); -%>
+    <%- include('../partials/header'); -%>
     <link rel="icon" href="<%= user.displayAvatarURL() %>" type="image/x-icon">
 </head>
 <body>
-    <%- include('partials/navbar'); -%>
+    <%- include('../partials/navbar'); -%>
 
     <img src="<%= perfil.displayAvatarURL %>" alt="">
     <h1><strong><%= perfil.tag %></strong></h1>
