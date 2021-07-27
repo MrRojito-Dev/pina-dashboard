@@ -43,21 +43,27 @@ router.post('/', auth, [
             sucess: false
         });
     } else {
-        const embedReport = new Discord.MessageEmbed()
-        .setAuthor(`${user.tag}`, user.displayAvatarURL({dynamic: true}))
-        .setColor("BLUE")
-        .setThumbnail(user.displayAvatarURL({dynamic: true}))
-        .setDescription("> **Reporte hecho desde la WEB**:")
-        .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
-        .setTimestamp()
+        try {
+            const embedReport = new Discord.MessageEmbed()
+            .setAuthor(`${user.tag}`, user.displayAvatarURL({dynamic: true}))
+            .setColor("BLUE")
+            .setThumbnail(user.displayAvatarURL({dynamic: true}))
+            .setDescription("> **Reporte hecho desde la WEB**:")
+            .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
+            .setTimestamp()
+    
+            ReportWebhook.send(embedReport);
+    
+            res.render('reportbug', {
+                title: 'Piña Bot',
+                user,
+                sucess: true
+            });
+        } catch (error) {
+            console.log(error);
 
-        ReportWebhook.send(embedReport);
-
-        res.render('reportbug', {
-            title: 'Piña Bot',
-            user,
-            sucess: true
-        });
+            res.status(500).send(`Ocurrió un error inesperado... Pide ayuda en el <a href="/soporte">servidor de soporte</a> Intenta de nuevo más tarde<br><a href="/">Ir al inicio</a>`)
+        }
     }
 });
 
