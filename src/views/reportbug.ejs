@@ -35,7 +35,7 @@
             <% if (typeof validations != "undefined") { %>
                 <div class="errores">
                     <% validations.forEach((validation) => { %>
-                        <div class="alert alert-dismissible alert-danger">
+                        <div class="alert alert-dismissible alert-danger error-alert animate__animated animate__backInLeft">
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             <p><%= validation.msg %></p>
                         </div>

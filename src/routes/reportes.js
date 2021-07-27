@@ -31,7 +31,6 @@ router.post('/', auth, [
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log(req.body);
         const values = req.body;
         const validations = errors.array();
 
