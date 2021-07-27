@@ -48,9 +48,9 @@ router.post('/', auth, [
             .setAuthor(`${user.tag}`, user.displayAvatarURL({dynamic: true}))
             .setColor("BLUE")
             .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            .setTitle("Reporte hecho desde la WEB:")
-            .setDescription(`> __**Título**__: **${req.body.bugTitle}** \n> __**Detalles**__: **${req.body.bugDescription}**`)
-            .setTimestamp()
+            .setDescription("> **Reporte hecho desde la WEB**:")
+            .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
+            embedReport.setTimestamp()
     
             ReportWebhook.send(embedReport);
     

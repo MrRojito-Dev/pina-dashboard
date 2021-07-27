@@ -6,6 +6,9 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "discord.js": "^12.5.3",
