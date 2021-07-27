@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Reportar un error | <%= title %></title>
+    <%- include('partials/header'); -%>
+
+    <link rel="stylesheet" href="/css/reportbug.css">
+</head>
+<body>
+    <%- include('partials/navbar'); -%>
+    
+    <main class="main-container text-center">
+        <h1><%= title %> <strong>Reportar un error</strong></h1>
+        <div class="main-content">
+            <% if (sucess) { %>
+                <h2>¡Muy bien, el error fue enviado!</h2>
+                <a class="btn btn-warning" href="/">Volver al inicio</a>
+            <% } else { %>
+                <h2>¿Encontraste un error?</h2>
+                <h5>¡Reportalo aquí!</h5>
+                <form action="/report" class="report-form form-group" method="POST">
+                    <div class="bug-title">
+                        <label for="bugTitle" class="form-label mt-4">Título del reporte</label>
+                        <textarea class="form-control" name="bugTitle" rows="3"><% if (typeof values != 'undefined') { %><%=values.bugTitle%><% } %></textarea>
+                    </div>
+                <div class="bug-description">
+                    <label for="bugDescription" class="form-label mt-4">Detalles</label>
+                    <textarea class="form-control w-30" name="bugDescription" rows="3"><% if (typeof values != 'undefined') { %><%=values.bugDescription%><% } %></textarea>
+                </div>
+                <div class="bug-send">
+                    <input type="submit" class="btn btn-warning">
+                </div>
+            </form>
+        </div>
+            <% if (typeof validations != "undefined") { %>
+                <div class="errores">
+                    <% validations.forEach((validation) => { %>
+                        <div class="alert alert-dismissible alert-danger">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            <p><%= validation.msg %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        <% } %>
+    </main>
+</body>
+</html>

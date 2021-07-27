@@ -7,11 +7,6 @@ const cookieParser = require('cookie-parser');
 const { Strategy } = require('passport-discord');
 const session = require('express-session');
 
-let indexRouter = require('./routes/index');
-let dashRouter = require('./routes/dashboard');
-let teamRouter = require('./routes/equipo');
-let perfilRouter = require('./routes/perfil');
-
 const app = express();
 const server = require('http').createServer(app);
 
@@ -34,7 +29,7 @@ passport.deserializeUser((obj, done) => {
 });
 
 let models = {
-  profiles: require('./database/models/profile.js'),
+  reports: require('./database/models/reports.js'),
 };
 
 client.models = models;
@@ -47,10 +42,7 @@ passport.use(new Strategy({
 }, (accessToken, refreshToken, profile, done) => {
   process.nextTick(async () => {
     const webLogs = await client.channels.fetch("868564301810659358");
-
     webLogs.send(`**${profile.username}#${profile.discriminator} (${profile.id})** ha iniciado sesión`);
-
-    let user = await client.users.fetch(profile.id).catch(() => false) || profile;
 
     return done(null, profile);
   });
@@ -77,10 +69,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/dashboard', dashRouter);
-app.use('/equipo', teamRouter);
-app.use('/perfil', perfilRouter);
+let routers = {
+  index: require('./routes/index'),
+  dashboard: require('./routes/dashboard'),
+  team: require('./routes/equipo'),
+  reportes: require('./routes/reportes'),
+};
+
+app.use('/', routers.index);
+app.use('/dashboard', routers.dashboard);
+app.use('/equipo', routers.team);
+app.use('/report', routers.reportes)
 
 app.get('*', (req, res) => {
   res.status(404).render('partials/404', {
@@ -92,7 +91,7 @@ const port = process.env.PORT || 3000;
 
 client.on("ready", () => {
   console.log("Bot Ready");
-  require('./database/connect.js').then(() => console.log(`Connected to the database`));
+  /* require('./database/connect.js').then(() => console.log(`Connected to the database`)); */
 });
 
 server.listen(port, () => {
