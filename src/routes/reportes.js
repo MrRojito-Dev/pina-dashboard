@@ -52,7 +52,7 @@ router.post('/', auth, [
             .setAuthor(`${user.tag} (${user.id})`, user.displayAvatarURL({dynamic: true}))
             .setColor("BLUE")
             .setThumbnail(user.displayAvatarURL({dynamic: true}))
-            .setDescription("> **Reporte hecho desde la WEB**:")
+            .setDescription(`> **[Reporte](${process.env.URL}/report/${reportID}) hecho desde la WEB**:`)
             .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
             .setFooter(`ID del reporte: ${reportID}`)
             .setTimestamp()
