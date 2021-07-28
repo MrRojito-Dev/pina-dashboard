@@ -16,13 +16,14 @@
             <% } else { %>
                 <div class="user-reports">
                     <% userReports.map((report) => { %>
-                        <div class="user-report" id="<%= report.report_id %>">
-                            <h4><%= report.reportTitle %></h4>
+                        <div class="user-report container" id="<%= report.report_id %>">
+                            <h4><%= report.reportTitle %> (<%= report.report_id %>)</h4>
                             <p><%= report.reportDescription %></p>
-                            <span><%= humanize(report.date) %></span>
+                            <span>Hace <%= humanize(report.date) %></span>
                         </div>
                     <% }) %>
                 </div>
+                <a class="btn btn-warning" href="/report">Reportar un error</a>
             <% } %>
         </div>
     </main>

@@ -10,7 +10,7 @@ const ReportWebhook = new Discord.WebhookClient(process.env.BUGS_WEBHOOK_ID, pro
 router.get('/', auth, async (req, res) => {
     const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
 
-    return res.render('reportbug', {
+    return res.render('reportes/reportbug', {
         title: 'Piña Bot',
         user,
         sucess: false,
