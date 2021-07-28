@@ -34,6 +34,23 @@ router.get('/soporte', async (req, res) => {
   });
 });
 
+// Mis reportes
+router.get('/mis-reportes', CheckAuth, async (req, res) => {
+  const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
+
+  const reportsModel = req.client.models.reports;
+  const userReports = await reportsModel.find({ user_id: user.id });
+
+  const { humanize } = require("../utils/utils.js");
+
+  res.render("reportes/mis-reportes", {
+    title: "Piña Bot",
+    user,
+    userReports,
+    humanize
+  });
+});
+
 // Login
 router.get('/login', (req, res, next) => {
   if (req.query.error === 'access_denied') {

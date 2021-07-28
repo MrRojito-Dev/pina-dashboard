@@ -1,5 +1,6 @@
 const permissions = require("./permissions");
 const fetch = require("node-fetch");
+const humanizeDuration = require("humanize-duration");
 const api = "https://discord.com/api/v6";
 
 const cache = new Map();
@@ -9,6 +10,18 @@ setInterval(() => {
 
 
 // Functions
+const humanize = (time) => {
+    let time_elapsed = humanizeDuration(Date.now() - time, {
+        language: 'es',
+        maxDecimalPoints: 0,
+        largest: 2,
+        conjunction: ' y ',
+        serialComma: false,
+        round: true
+      });
+    return time_elapsed;
+};
+
 const getUser = async (userID) => {
     const userCache = cache.get(`user-${userID}`);
     if (userCache) return userCache;
@@ -95,5 +108,6 @@ module.exports = {
     getUser,
     getGuilds,
     getPermissions,
-    getBotGuilds
+    getBotGuilds,
+    humanize
 };

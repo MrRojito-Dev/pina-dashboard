@@ -37,7 +37,7 @@ router.post('/', auth, [
         const values = req.body;
         const validations = errors.array();
 
-        res.render('reportbug', {
+        res.render('reportes/reportbug', {
             title: 'Piña Bot',
             user,
             validations,
@@ -46,16 +46,18 @@ router.post('/', auth, [
         });
     } else {
         try {
+            let reportID = nanoid(7);
             const embedReport = new Discord.MessageEmbed()
-            .setAuthor(`${user.tag}`, user.displayAvatarURL({dynamic: true}))
+            .setAuthor(`${user.tag} (${user.id})`, user.displayAvatarURL({dynamic: true}))
             .setColor("BLUE")
             .setThumbnail(user.displayAvatarURL({dynamic: true}))
             .setDescription("> **Reporte hecho desde la WEB**:")
             .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
+            .setFooter(`ID del reporte: ${reportID}`)
             .setTimestamp()
 
             let newReport = new reportm({
-                report_id: nanoid(7),
+                report_id: reportID,
                 user_id: user.id,
                 reportTitle: `${req.body.bugTitle}`,
                 reportDescription: `${req.body.bugDescription}`,
@@ -64,7 +66,7 @@ router.post('/', auth, [
     
             ReportWebhook.send(embedReport);
     
-            res.render('reportbug', {
+            res.render('reportes/reportbug', {
                 title: 'Piña Bot',
                 user,
                 sucess: true

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Mis reportes | <%= title %></title>
+    <%- include('../partials/header'); -%>
+</head>
+<body>
+    <%- include('../partials/navbar'); -%>
+    
+    <main class="main-container text-center">
+        <h1><%= title %> <strong>Mis Reportes</strong></h1>
+        <div class="main-content">
+            <% if (userReports.length === 0) { %>
+                <h2>¡Aún no tienes reportes!</h2>
+                <a class="btn btn-warning" href="/report">Reportar un error</a>
+            <% } else { %>
+                <div class="user-reports">
+                    <% userReports.map((report) => { %>
+                        <div class="user-report" id="<%= report.report_id %>">
+                            <h4><%= report.reportTitle %></h4>
+                            <p><%= report.reportDescription %></p>
+                            <span><%= humanize(report.date) %></span>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>
