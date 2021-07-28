@@ -1,0 +1,14 @@
+.user-reports {
+    width: 100%;
+}
+
+.user-report {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    justify-content: space-between;
+    padding: 1em;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

@@ -82,7 +82,7 @@ router.post('/', auth, [
     }
 });
 
-router.use("/:reportID", async (req, res) => {
+router.use("/:reportID", auth, async (req, res) => {
     const soportes = [
         "648654138929840164", // Rojito
         "749785464923488348", // Norean
@@ -101,7 +101,7 @@ router.use("/:reportID", async (req, res) => {
         message = "¡Este reporte no existe!";
     }
 
-    if (report ? report.user_id : user.id !== user.id && !soportes.includes(user.id)) {
+    if (report ? report.user_id !== user.id : "0" !== user.id && !soportes.includes(user.id)) {
         message = "¡No puedes ver este reporte! ¡No es tuyo!";
     };
 

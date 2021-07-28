@@ -3,6 +3,8 @@
 <head>
     <title>Mis reportes | <%= title %></title>
     <%- include('../partials/header'); -%>
+
+    <link rel="stylesheet" href="/css/mis-reportes.css">
 </head>
 <body>
     <%- include('../partials/navbar'); -%>
@@ -17,9 +19,13 @@
                 <div class="user-reports">
                     <% userReports.map((report) => { %>
                         <div class="user-report container" id="<%= report.report_id %>">
-                            <h4><%= report.reportTitle %> (<%= report.report_id %>)</h4>
-                            <p><%= report.reportDescription %></p>
-                            <span>Hace <%= humanize(report.date) %></span>
+                            <div class="report-title-container">
+                                <img class="user-avatar" src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="Avatar de <%= user.username %>">
+                                <span class="report-title"><%= report.reportTitle.length >= 15 ? report.reportTitle.substr(0, 15)... %></span>
+                            </div>
+                            <div class="report-content">
+                                <p><%= report.reportDescription %></p>
+                            </div>
                             <a class="btn btn-warning" href="/report/<%= report.report_id %>">Ver</a>
                         </div>
                     <% }) %>
