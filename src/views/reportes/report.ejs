@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Reporte | <%= title %></title>
+    <%- include('../partials/header'); -%>
+</head>
+<body>
+    <%- include('../partials/navbar'); -%>
+    
+    <main class="main-container text-center">
+        <h1><%= title %> <strong>Reporte</strong></h1>
+        <div class="main-content">
+            <% if (message) { %>
+                <h2><%= message %></h2>
+            <% } else { %>
+                <div class="report-container container">
+                    <div class="report-content">
+                        <h4><%= report.reportTitle %></h4>
+                        <p><%= report.reportDescription %></p>
+                        <span>ID: <%= report.report_id %> | Hace <%= humanize(report.date) %</span>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

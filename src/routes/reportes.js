@@ -3,7 +3,8 @@ const { body, validationResult } = require('express-validator');
 const auth = require('../utils/auth');
 
 const { nanoid } = require("nanoid");
-
+const { humanize } = require("../utils/utils");
+ 
 const Discord = require('discord.js');
 const ReportWebhook = new Discord.WebhookClient(process.env.BUGS_WEBHOOK_ID, process.env.BUGS_WEBHOOK_TOKEN)
 
@@ -79,6 +80,37 @@ router.post('/', auth, [
             res.status(500).send(`Ocurrió un error inesperado... Pide ayuda en el <a href="/soporte">servidor de soporte</a> Intenta de nuevo más tarde<br><a href="/">Ir al inicio</a>`)
         }
     }
+});
+
+router.use("/:reportID", (req, res) => {
+    const soportes = [
+        "648654138929840164", // Rojito
+        "749785464923488348", // Norean
+        "480176818297503744", // Johan
+        "764571098334494772", // EsteName_
+        "648844291703308298" // Calixto
+    ];
+    const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
+    const reportm = req.client.models.reports;
+
+    let message = "";
+
+    const report = reportm.findOne({ report_id: req.params.reportID });
+
+    if (!report) {
+        message = "¡Este reporte no existe!";
+    }
+    if (report.user_id !== user.id && !soportes.includes(user.id)) {
+        message = "¡No puedes ver este reporte! ¡No es tuyo!";
+    };
+
+    res.render("reportes/report", {
+        title: "Piña Bot",
+        user,
+        message,
+        report,
+        humanize
+    });
 });
 
 module.exports = router;
