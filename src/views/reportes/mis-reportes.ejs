@@ -20,7 +20,7 @@
                             <h4><%= report.reportTitle %> (<%= report.report_id %>)</h4>
                             <p><%= report.reportDescription %></p>
                             <span>Hace <%= humanize(report.date) %></span>
-                            <a href="/report/<%= report.report_id %>">Ver</a>
+                            <a class="btn btn-warning" href="/report/<%= report.report_id %>">Ver</a>
                         </div>
                     <% }) %>
                 </div>

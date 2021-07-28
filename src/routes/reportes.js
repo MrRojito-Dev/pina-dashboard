@@ -95,12 +95,13 @@ router.use("/:reportID", async (req, res) => {
 
     let message = "";
 
-    const report = reportm.findOne({ report_id: req.params.reportID });
+    const report = await reportm.findOne({ report_id: req.params.reportID });
 
     if (!report) {
         message = "¡Este reporte no existe!";
     }
-    if (report.user_id !== user.id && !soportes.includes(user.id)) {
+
+    if (report ? report.user_id : user.id !== user.id && !soportes.includes(user.id)) {
         message = "¡No puedes ver este reporte! ¡No es tuyo!";
     };
 
