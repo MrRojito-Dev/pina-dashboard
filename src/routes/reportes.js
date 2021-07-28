@@ -55,7 +55,7 @@ router.post('/', auth, [
             .setTimestamp()
 
             let newReport = new reportm({
-                report_id: reportID(),
+                report_id: reportID(7),
                 user_id: user.id,
                 reportTitle: req.body.reportTitle,
                 reportDescription: req.body.reportDescription,
