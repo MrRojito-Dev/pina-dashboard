@@ -91,7 +91,7 @@ const port = process.env.PORT || 3000;
 
 client.on("ready", () => {
   console.log("Bot Ready");
-  /* require('./database/connect.js').then(() => console.log(`Connected to the database`)); */
+  require('./database/connect.js').then(() => console.log(`Connected to the database`));
 });
 
 server.listen(port, () => {

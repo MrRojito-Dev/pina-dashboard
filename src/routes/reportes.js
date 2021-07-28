@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const auth = require('../utils/auth');
 
-const reportID = require("nanoid");
+const { nanoid } = require("nanoid");
 
 const Discord = require('discord.js');
 const ReportWebhook = new Discord.WebhookClient(process.env.BUGS_WEBHOOK_ID, process.env.BUGS_WEBHOOK_TOKEN)
@@ -30,7 +30,7 @@ router.post('/', auth, [
 
 ], async (req, res) => {
     const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
-    const reportm = client.models.reports;
+    const reportm = req.client.models.reports;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -55,10 +55,10 @@ router.post('/', auth, [
             .setTimestamp()
 
             let newReport = new reportm({
-                report_id: reportID(7),
+                report_id: nanoid(7),
                 user_id: user.id,
-                reportTitle: req.body.reportTitle,
-                reportDescription: req.body.reportDescription,
+                reportTitle: `${req.body.bugTitle}`,
+                reportDescription: `${req.body.bugDescription}`,
                 date: Date.now()
             });
     
