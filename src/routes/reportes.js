@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { body, validationResult } = require('express-validator');
 const auth = require('../utils/auth');
 
+const reportID = require("nanoid");
+
 const Discord = require('discord.js');
 const ReportWebhook = new Discord.WebhookClient(process.env.BUGS_WEBHOOK_ID, process.env.BUGS_WEBHOOK_TOKEN)
 
@@ -28,6 +30,7 @@ router.post('/', auth, [
 
 ], async (req, res) => {
     const user = await req.client.users.fetch(req.user ? req.user.id : null).catch(() => false);
+    const reportm = client.models.reports;
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -49,7 +52,15 @@ router.post('/', auth, [
             .setThumbnail(user.displayAvatarURL({dynamic: true}))
             .setDescription("> **Reporte hecho desde la WEB**:")
             .addField(`${req.body.bugTitle}`, `${req.body.bugDescription}`)
-            embedReport.setTimestamp()
+            .setTimestamp()
+
+            let newReport = new reportm({
+                report_id: reportID(),
+                user_id: user.id,
+                reportTitle: req.body.reportTitle,
+                reportDescription: req.body.reportDescription,
+                date: Date.now()
+            });
     
             ReportWebhook.send(embedReport);
     
@@ -58,6 +69,8 @@ router.post('/', auth, [
                 user,
                 sucess: true
             });
+
+            newReport.save().then(() => console.log("Reporte guardado en la base de datos"))
         } catch (error) {
             console.log(error);
 
