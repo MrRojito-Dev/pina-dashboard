@@ -45,6 +45,7 @@
     .user-report {
         flex-direction: column;
         width: 75vw;
+        height: 220px;
     }
 
     .report-title-container {
