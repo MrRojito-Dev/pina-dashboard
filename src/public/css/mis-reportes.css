@@ -3,10 +3,10 @@
 }
 
 .user-report {
-    width: 100%;
+    width: 150vw;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 85px;
     flex-wrap: nowrap;
     flex-direction: row;
     align-content: center;
@@ -28,6 +28,8 @@
 
 .report-title {
     color: var(--text-color);
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .report-content {
@@ -35,4 +37,22 @@
     align-items: center;
     align-content: center;
     color: var(--light-text-color);
+    margin: 0;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 575px) {
+    .user-report {
+        flex-direction: column;
+        width: 75vw;
+    }
+
+    .report-title-container {
+        width: 250px;
+        flex-direction: column;
+    }
+
+    .view-report-btn {
+        margin-top: 25px;
+    }
 }
