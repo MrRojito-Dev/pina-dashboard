@@ -24,7 +24,7 @@
                                 <span class="report-title"><%= report.reportTitle.length >= 20 ? `${report.reportTitle.substr(0, 20)}...`  : report.reportTitle%></span>
                             </div>
                             <div class="report-content">
-                                <p><%= report.reportDescription.length >= 15 ? `${report.reportDescription.substr(0, 15)}...` : report.reportDescription %></p>
+                                <p><%= report.reportDescription.length >= 25 ? `${report.reportDescription.substr(0, 25)}...` : report.reportDescription %></p>
                             </div>
                             <a class="view-report-btn btn btn-warning" href="/report/<%= report.report_id %>">Ver</a>
                         </div>
