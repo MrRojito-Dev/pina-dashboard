@@ -21,10 +21,10 @@
                         <div class="user-report container" id="<%= report.report_id %>">
                             <div class="report-title-container">
                                 <img class="user-avatar" src="<%= user.displayAvatarURL({ dynamic: true }) %>" alt="Avatar de <%= user.username %>">
-                                <span class="report-title"><%= report.reportTitle.length >= 15 ? `${report.reportTitle.substr(0, 15)}...`  : report.reportTitle%></span>
+                                <span class="report-title"><%= report.reportTitle.length >= 20 ? `${report.reportTitle.substr(0, 20)}...`  : report.reportTitle%></span>
                             </div>
                             <div class="report-content">
-                                <p><%= report.reportDescription %></p>
+                                <p><%= report.reportDescription.length >= 15 ? `${report.reportDescription.substr(0, 15)}...` : report.reportDescription %></p>
                             </div>
                             <a class="btn btn-warning" href="/report/<%= report.report_id %>">Ver</a>
                         </div>

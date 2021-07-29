@@ -7,6 +7,9 @@
     display: flex;
     align-items: center;
     height: 60px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
     justify-content: space-between;
     padding: 1em;
     border-radius: 5px;
@@ -15,8 +18,11 @@
 
 .report-title-container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     align-content: flex-start;
+    justify-content: flex-start;
     width: 50%;
 }
 
