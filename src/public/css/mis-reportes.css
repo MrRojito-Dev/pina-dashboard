@@ -12,3 +12,21 @@
     border-radius: 5px;
     margin-bottom: 20px;
 }
+
+.report-title-container {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    width: 50%;
+}
+
+.report-title {
+    color: var(--text-color);
+}
+
+.report-content {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    color: var(--light-text-color);
+}
