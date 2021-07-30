@@ -6,6 +6,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const { Strategy } = require('passport-discord');
 const session = require('express-session');
+const fetch = require('node-fetch');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -88,6 +89,10 @@ app.get('*', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
+
+process.on('uncaughtException', (err) => {
+  console.log(err);
+}); 
 
 client.on("ready", () => {
   console.log("Bot Ready");

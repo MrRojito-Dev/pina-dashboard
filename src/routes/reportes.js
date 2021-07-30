@@ -98,10 +98,12 @@ router.use("/:reportID", auth, async (req, res) => {
     const report = await reportm.findOne({ report_id: req.params.reportID });
 
     if (!report) {
-        message = "¡Este reporte no existe!";
+        return res.status(404).render("partials/404", {
+          title: "Piña Bot"
+        });
     }
 
-    if (report ? report.user_id !== user.id : "0" !== user.id && !soportes.includes(user.id)) {
+    if (report.user_id !== user.id && !soportes.includes(user.id)) {
         message = "¡No puedes ver este reporte! ¡No es tuyo!";
     };
 

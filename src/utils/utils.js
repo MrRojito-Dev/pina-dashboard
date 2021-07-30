@@ -90,10 +90,10 @@ const getGuilds = (botGuilds, userGuilds) => {
 };
 
 const getBotGuilds = async () => {
-    const res = await fetch(`${api}/users/${process.env.CLIENT_ID}`, {
+    const res = await fetch(`${process.env.FETCH}/guilds`, {
         method: 'GET',
         headers: {
-            Authorization: `Bot ${process.env.DISCORD_TOKEN}`
+            "pass": `${process.env.ACCESS}`
         }
     });
 
