@@ -6,7 +6,6 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const { Strategy } = require('passport-discord');
 const session = require('express-session');
-const fetch = require('node-fetch');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -94,15 +93,13 @@ process.on('uncaughtException', (err) => {
   console.log(err);
 }); 
 
-client.on("ready", () => {
-  console.log("Bot Ready");
-  /* require('./database/connect.js').then(() => console.log(`Connected to the database`)); */
-});
-
 server.listen(port, () => {
   console.log(`Server listen on port ${port}`)
 
-  client.login(process.env.DISCORD_TOKEN)
-  .then(() => console.log(`sesión iniciada en Discord como ${client.user.tag}`))
+  client.login()
+  .then(() => {
+    console.log(`sesión iniciada en Discord como ${client.user.tag}`)
+    require('./database/connect.js').then(() => console.log(`Connected to the database`));
+  })
   .catch((err) => console.error(err))
 });

@@ -22,6 +22,7 @@ const humanize = (time) => {
     return time_elapsed;
 };
 
+/* https://github.com/AndreMor8/dashboard/blob/master/backend/utils/utils.js */
 const getUser = async (userID) => {
     const userCache = cache.get(`user-${userID}`);
     if (userCache) return userCache;
@@ -79,7 +80,7 @@ const getGuilds = (botGuilds, userGuilds) => {
     const toShow = userGuilds.filter((e) => {
         if (!botGuilds.includes(e.id)) return;
         const p = guildMemberPermissions.get(e.id);
-        if (p && p.get("ADMINISTRATOR")) {
+        if (p && p.get("MANAGE_GUILD")) {
             return true;
         } else {
             return false;
