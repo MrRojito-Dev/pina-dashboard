@@ -8,9 +8,17 @@ const utils = require('../utils/utils');
 router.get('/', CheckAuth, async (req, res) => {
   const user = await req.client.users.fetch(req.user.id);
 
+  const userGuilds = req.user.guilds;
+  const botGuilds = await utils.getBotGuilds();
+  const toShow = utils.getGuilds(botGuilds, userGuilds);
+
+  req.user.toShowGuilds = toShow;
+
+  console.log(toShow);
+
   res.render('dashboard/dashboard', {
     user: user,
-    guilds: req.user.guilds,
+    guilds: toShow,
     title: "Piña Bot"
   });
 

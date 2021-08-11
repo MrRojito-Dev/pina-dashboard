@@ -4,12 +4,33 @@
     <title>Miembros del equipo | <%= title %></title>
     <%- include('../partials/header'); -%>
 
+    <link rel="stylesheet" href="/css/team-members.css">
 </head>
 <body>
     <%- include("../partials/navbar"); -%>
 
     <main class="main-container text-center">
-        
+        <div class="team-page container">
+            <% team.forEach((member) => { %>
+                <div class="team-member-card"
+                <% if (member.cargos.includes("Administrador")) { %>
+                    style="background: linear-gradient(-35deg, rgba(252, 24, 39, 0.5) 20%, #ff0000 130%); box-shadow: #de1e1e40 0px 2px 52px 0px;"
+                <% } else if (member.cargos.includes("Soporte")) { %>
+                    style="background: linear-gradient(-35deg, #349269 20%, #4bdb7a 130%); box-shadow: #4bdb7a40 0px 2px 52px 0px;"
+                <% } else if (member.cargos.includes("Gestor de logros")) { %>
+                    style="background: linear-gradient(-35deg, #00dee680 20%, #3498db 130%); box-shadow: #3498db40 0px 2px 52px 0px;"
+                <% } %>
+                >
+                    <div class="card-user">
+                        <h3><%= member.user.username %></h3>
+                        <h4><%= member.cargos.join(", ") %></h4>
+                    </div>
+                    <div class="card-avatar">
+                        <img draggable="false" src="<%= member.user.displayAvatarURL({ dynamic: true}) %>" alt="Avatar de <%= member.user.username %>">
+                    </div>
+                </div>
+            <% }) %>
+        </div>
     </main>
 </body>
 </html>

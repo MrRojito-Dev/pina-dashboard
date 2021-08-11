@@ -1,0 +1,47 @@
+.team-page {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.team-member-card {
+    margin: 10px 5px;
+    position: relative;
+    width: 250px;
+    height: 50px;
+    border-radius: 7px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-user {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+}
+
+.card-user h3, h4 {
+    overflow: hidden;
+    margin: 0 0 0 5px;
+}
+
+.card-user h3 {
+    font-size: 18px;
+}
+
+.card-user h4 {
+    width: 98%;
+    font-size: 12px;
+    color: #ffffffb3;
+    display: inline-block;
+}
+
+.card-avatar img {
+    height: 40px;
+    border-radius: 50%;
+}
