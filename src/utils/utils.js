@@ -72,7 +72,7 @@ const getGuilds = (botGuilds, userGuilds) => {
 
     const guildMemberPermissions = new Map();
     userGuilds.forEach((guild) => {
-        const perm = this.getPermissions(guild.permissions);
+        const perm = getPermissions(guild.permissions);
         guildMemberPermissions.set(guild.id, perm);
     });
 

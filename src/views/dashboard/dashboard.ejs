@@ -1,32 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <title>Dashboard | <%= title %></title>
+	<head>
+		<title>Dashboard | <%= title %></title>
 
-    <%- include('../partials/header'); -%>
-    <link rel="stylesheet" href="/css/dashboard.css">
-</head>
-<body>
-    <%- include('../partials/navbar'); -%>
+		<%- include('../partials/header'); -%>
+		<link rel="stylesheet" href="/css/dashboard.css" />
+	</head>
+	<body>
+		<%- include('../partials/navbar'); -%>
 
-    <main class="main-container text-center" id="main">
-        <h1><%= title %> <strong>Dashboard</strong></h1>
-
-        <div class="main-content">
-          <% guilds.filter((g) => g.owner).forEach((guild) => { %>
-            <div class="server-row container">
-                <div class="server-info">
-                    <% if (guild.icon) { %>
-                        <img class="server-icon" radius="25" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png" alt="Icono de <%= guild.name %>">
-                    <% } else { %>
-                        <div class="server-icon letter-icon radius-border" size="40" radius="25"> <%= guild.name[0].toUpperCase() %> </div>
-                    <% } %>
-                    <span class="server-name"><%= guild.name %></span>
-                </div>
-                <a class="server-button btn btn-warning" href="https://discord.com/oauth2/authorize?scope=bot&permissions=70642880&client_id=744386070552117278&guild_id=<%= guild.id %>">Añadir al servidor</a>
+        <% if (load) { %>
+            <div class="loader" style="width: 100%; height: 100%; position: absolute;">
+                <img src="https://cdn.discordapp.com/emojis/852775955378601994.gif" alt="Piña dando vueltas">
             </div>
-          <% }) %>
-        </div>
-    </main>
-</body>
+        <% } %>
+
+		<main class="main-container text-center" id="main">
+			<h1><%= title %> <strong>Dashboard</strong></h1>
+
+			<div class="main-content">
+				<div class="servers-bot-in">
+                    <h4>Administrar servidores</h4>
+					<% guildsBotIn.forEach((guild) => { %>
+					<div class="server-row container">
+						<div class="server-info">
+							<% if (guild.icon) { %>
+							<img
+								class="server-icon"
+								radius="25"
+								src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png"
+								alt="Icono de <%= guild.name %>"
+							/>
+							<% } else { %>
+							<div
+								class="server-icon letter-icon radius-border"
+								size="40"
+								radius="25"
+							>
+								<%= guild.name[0].toUpperCase() %>
+							</div>
+							<% } %>
+							<span class="server-name"><%= guild.name %></span>
+						</div>
+						<a
+							class="server-button btn btn-success"
+							href="#"
+							>¡Gracias por invitarme!</a
+						>
+					</div>
+					<% }) %>
+				</div>
+                <% if (guildsBotNotIn.length !== 0) { %>
+                    <div class="servers-bot-not-in">
+                        <h4>¡Añademe!</h4>
+                        <% guildsBotNotIn.forEach((guild) => { %>
+                            <div class="server-row container">
+                                <div class="server-info">
+                                    <% if (guild.icon) { %>
+                                    <img
+                                        class="server-icon"
+                                        radius="25"
+                                        src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png"
+                                        alt="Icono de <%= guild.name %>"
+                                    />
+                                    <% } else { %>
+                                    <div
+                                        class="server-icon letter-icon radius-border"
+                                        size="40"
+                                        radius="25"
+                                    >
+                                        <%= guild.name[0].toUpperCase() %>
+                                    </div>
+                                    <% } %>
+                                    <span class="server-name"><%= guild.name %></span>
+                                </div>
+                                <a
+                                    class="server-button btn btn-warning"
+                                    href="https://discord.com/oauth2/authorize?scope=bot&permissions=70642880&client_id=744386070552117278&guild_id=<%= guild.id %>"
+                                    >Añadirme al servidor</a
+                                >
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+			</div>
+		</main>
+	</body>
 </html>
