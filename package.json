@@ -20,7 +20,7 @@
     "http-errors": "~1.6.3",
     "humanize-duration": "^3.27.0",
     "mongoose": "^5.13.3",
-    "nanoid": "^3.1.23",
+    "nanoid": "^3.1.31",
     "node-fetch": "^2.6.7",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4"
